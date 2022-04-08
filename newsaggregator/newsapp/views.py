@@ -1,5 +1,6 @@
 from newsapp.models import Category
 from django.http import response
+import environ
 from django.shortcuts import render,redirect
 import requests
 from .models import Category, UserCategory, UserSource, Source
@@ -7,7 +8,10 @@ from django.contrib.auth.models import User,auth
 
 from django.contrib import messages
 from django.core.mail import send_mail
-API_KEY = '809ca1512cef461394b1fa213ed703cf'
+
+env = environ.Env()
+environ.Env.read_env()
+API_KEY = env('SECRET_KEY')
 
 # Create your views here.
 
